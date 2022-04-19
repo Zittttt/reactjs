@@ -15,13 +15,33 @@ import BaiTapGameXucXac from "./DemoRedux/BaiTapGameXucXac/BaiTapGameXucXac";
 //Component App sẽ là nơi chứa toàn bộ giao diện của ứng dụng/
 // Cấu hình router
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
+import HeaderHome from "./Component/HeaderHome/HeaderHome";
+import Profile from "./pages/Profile/Profile";
+import Detail from "./pages/Detail/Detail";
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path={"/home"} component={Home} />
+      <HeaderHome />
+
+      <Switch>
+        <Route exact path={"/home"} component={Home} />
+        <Route exact path={"/login"} component={Login} />
+        <Route exact path={"/register"} component={Register} />
+        <Route exact path={"/about"} component={About} />
+        <Route exact path={"/contact"} component={Contact} />
+        <Route exact path={"/profile"} component={Profile} />
+        <Route exact path={"/detail/:postid"} component={Detail} />
+
+        {/* Trang mặc định luôn nằm dưới cùng */}
+        <Route exact path={"/"} component={Home} />
+      </Switch>
     </BrowserRouter>
   );
 }
