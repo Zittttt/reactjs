@@ -64,6 +64,15 @@ export default class HeaderHome extends Component {
                 Register
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                activeClassName="font-weight-bold bg-white text-dark"
+                className="nav-link"
+                to="/baitapform"
+              >
+                React Form
+              </NavLink>
+            </li>
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
