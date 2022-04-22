@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class FormDangKy extends Component {
+class FormDangKy extends Component {
   state = {
     values: {
       taiKhoan: "",
@@ -22,6 +23,10 @@ export default class FormDangKy extends Component {
   handleChangeInput = (event) => {
     // Thẻ xảy ra sự kiện
     let { id, value, name } = event.target;
+    //Lấy ra giá trị tự thêm
+    let dataType = event.target.getAttribute("data-type");
+
+    console.log("data-type", dataType);
 
     //Xử lý value
     let newValues = { ...this.state.values };
@@ -33,6 +38,15 @@ export default class FormDangKy extends Component {
     let messageError = "";
     if (value.trim() === "") {
       messageError = name + " không được bỏ trống";
+    }
+
+    if (dataType === "email") {
+      let regexEmail =
+        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+      if (!regexEmail.test(value)) {
+        messageError = "Email không đúng định dạng !";
+      }
     }
     newErros[id] = messageError;
 
@@ -63,6 +77,12 @@ export default class FormDangKy extends Component {
       }
     }
     console.log("Đã đăng ký");
+    //Đưa dữ liệu lên redux
+    const action = {
+      type: "DANG_KY",
+      nguoiDung: this.state.values,
+    };
+    this.props.dispatch(action);
   };
 
   render() {
@@ -100,7 +120,7 @@ export default class FormDangKy extends Component {
               <div className="form-group">
                 <p>Email</p>
                 <input
-                  type="text"
+                  data-type="email"
                   className="form-control"
                   id="email"
                   name="Email"
@@ -124,7 +144,7 @@ export default class FormDangKy extends Component {
               <div className="form-group">
                 <p>Số điện thoại</p>
                 <input
-                  type="text"
+                  data-type="phone"
                   className="form-control"
                   id="soDienThoai"
                   name="Số điện thoại"
@@ -158,3 +178,5 @@ export default class FormDangKy extends Component {
     );
   }
 }
+
+export default connect()(FormDangKy);
