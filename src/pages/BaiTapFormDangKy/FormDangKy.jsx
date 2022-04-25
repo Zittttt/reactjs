@@ -85,10 +85,31 @@ class FormDangKy extends Component {
     this.props.dispatch(action);
   };
 
+  //Can thiệp vào quá trình thay đổi props của component trước khi render
+
+  // static getDerivedStateFromProps(newProps, currentState) {
+  //   //Khi người dùng bấm nút sửa => thì component sẽ nhận newProps => đem props mới gán vào state.values và trả state mới
+
+  //   if (newProps.nguoiDungSua.taiKhoan !== currentState.values.taiKhoan) {
+  //     //Trường hợp bấm nút sửa
+  //     currentState.values = newProps.nguoiDungSua;
+  //   }
+
+  //   return currentState;
+  // }
+
+  //Hàm life cycle này chỉ chạy khi props thay đổi, state thay đổi sẽ không chạy
+  componentWillReceiveProps(newProps) {
+    //Khi props thay đổi trước khi render thì lấy nguoiDungSua đưa vào this.state.values
+    this.setState({
+      values: newProps.nguoiDungSua,
+    });
+  }
+
   render() {
     console.log(this.state);
     let { taiKhoan, hoTen, email, matKhau, soDienThoai, loaiNguoiDung } =
-      this.props.nguoiDungSua;
+      this.state.values;
 
     return (
       <form className="card" onSubmit={this.handleSubmit}>
@@ -181,6 +202,21 @@ class FormDangKy extends Component {
         <div className="card-footer">
           <button className="btn btn-success" type="submit">
             Đăng ký
+          </button>
+          <button
+            className="btn btn-primary ml-2"
+            type="button"
+            onClick={() => {
+              //Tạo ra action
+              const action = {
+                type: "CAP_NHAT_NGUOI_DUNG",
+                nguoiDung: this.state.values,
+              };
+              //Đưa dữ liệu sau khi người dùng chỉnh sửa về redux store
+              this.props.dispatch(action);
+            }}
+          >
+            Cập nhật
           </button>
         </div>
       </form>

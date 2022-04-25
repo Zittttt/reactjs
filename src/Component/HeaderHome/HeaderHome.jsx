@@ -88,6 +88,9 @@ export default class HeaderHome extends Component {
                 <NavLink className="dropdown-item" to="/lifecycle">
                   Life Cycle
                 </NavLink>
+                <NavLink className="dropdown-item" to="/usestate">
+                  Use state
+                </NavLink>
               </div>
             </li>
           </ul>

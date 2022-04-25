@@ -6,6 +6,10 @@ export default class LifeCycle extends Component {
     super(props);
     this.state = {
       number: 1,
+      like: 1,
+      objectNumber: {
+        number: 1,
+      },
     };
     console.log("constructor");
   }
@@ -15,9 +19,11 @@ export default class LifeCycle extends Component {
     return true;
   }
 
+  //Hàm dùng để can thiệp vào quá trình thay đổi state và props trước khi render ra giao diện
   static getDerivedStateFromProps(newProps, currentState) {
     console.log("getDerivedStateFromProps");
-    return currentState;
+    currentState.like += 1;
+    return { ...currentState };
   }
 
   render() {
@@ -46,13 +52,74 @@ export default class LifeCycle extends Component {
         >
           -
         </button>
+        <hr />
+        <h3>Parrent Component</h3>
+        <p>Like: {this.state.like}</p>
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => {
+            this.setState({
+              like: this.state.like + 1,
+            });
+          }}
+        >
+          +
+        </button>
+        <button
+          className="btn btn-primary ml-2"
+          onClick={() => {
+            this.setState({
+              like: this.state.like - 1,
+            });
+          }}
+        >
+          -
+        </button>
+        <hr />
+        <h3>Parrent Component</h3>
+        <p>Object Number: {this.state.objectNumber.number}</p>
+        <button
+          className="btn btn-primary mr-2"
+          onClick={() => {
+            let newNumber = { ...this.state.objectNumber };
+            newNumber.number += 1;
+            this.setState({
+              objectNumber: newNumber,
+            });
+          }}
+        >
+          +
+        </button>
+        <button
+          className="btn btn-primary ml-2"
+          onClick={() => {
+            let newNumber = { ...this.state.objectNumber };
+            newNumber.number -= 1;
+            this.setState({
+              objectNumber: newNumber,
+            });
+          }}
+        >
+          -
+        </button>
         <div className="bg-dark text-white p-3">
-          <Child />
+          <Child objectNumber={this.state.objectNumber} />
         </div>
       </div>
     );
   }
+
+  timeOut = {};
+
   componentDidMount() {
     console.log("componentDidMount");
+
+    this.timeOut = setInterval(() => {
+      console.log("call api 2s 1 lần");
+    }, 2000);
+  }
+  componentWillUnmount() {
+    //Hàm này dùng để clear các hàm chạy ngầm của component trước khi component mất khỏi giao diện
+    clearInterval(this.timeOut);
   }
 }

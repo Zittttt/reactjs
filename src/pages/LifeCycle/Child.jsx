@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 
-export default class Child extends Component {
+export default class Child extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,18 +8,29 @@ export default class Child extends Component {
   }
 
   static getDerivedStateFromProps(newProps, currentState) {
+    //Hàm nhận vào props mới (sau khi thay đổi != this.props) và this.state
+    //=> Xử lý trả về state mới
     console.log("getDerivedStateFromProps child");
     return currentState;
   }
 
-  shouldComponentUpdate(newProps, newState) {
-    console.log("shouldComponentUpdate child");
-    return true;
-  }
+  //Khi sử dụng PureComponent thì chỉ so sánh props cũ và mới với kiểu dữ liệu primitive value (number,string,boolean) Shallow Compare
+
+  // shouldComponentUpdate(newProps, newState) {
+  //   if (this.props.number === newProps.number) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   render() {
     console.log("render child");
-    return <div>Child</div>;
+    return (
+      <div>
+        <h3>Child component</h3>
+        <p>Render props number: {this.props.objectNumber.number}</p>
+      </div>
+    );
   }
 
   componentDidMount() {
