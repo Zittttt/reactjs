@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 
 class TableNguoiDung extends Component {
   render() {
-    let { mangNguoiDung } = this.props;
-
     return (
       <table className="table">
         <thead>
@@ -21,31 +19,31 @@ class TableNguoiDung extends Component {
           </tr>
         </thead>
         <tbody>
-          {mangNguoiDung.map((nguoiDung, index) => {
+          {this.props.mangNguoiDung.map((nd, index) => {
             return (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{nguoiDung.taiKhoan}</td>
+                <td>{nd.taiKhoan}</td>
                 <td>
                   <img
-                    src={`https://i.pravatar.cc?u=${nguoiDung.hoTen}`}
+                    src={`https://i.pravatar.cc?u=${nd.hoTen}`}
                     width={50}
                     height={50}
                     alt="..."
                   />
                 </td>
-                <td>{nguoiDung.hoTen}</td>
-                <td>{nguoiDung.matKhau}</td>
-                <td>{nguoiDung.email}</td>
-                <td>{nguoiDung.soDienThoai}</td>
-                <td>{nguoiDung.loaiNguoiDung}</td>
+                <td>{nd.hoTen}</td>
+                <td>{nd.matKhau}</td>
+                <td>{nd.email}</td>
+                <td>{nd.soDienThoai}</td>
+                <td>{nd.loaiNguoiDung}</td>
                 <td>
                   <button
                     className="btn btn-danger"
                     onClick={() => {
                       const action = {
                         type: "XOA",
-                        taiKhoan: nguoiDung.taiKhoan,
+                        taiKhoan: nd.taiKhoan,
                       };
                       this.props.dispatch(action);
                     }}
@@ -57,7 +55,7 @@ class TableNguoiDung extends Component {
                     onClick={() => {
                       const action = {
                         type: "SUA",
-                        nguoDung: nguoiDung,
+                        nguoiDung: nd,
                       };
                       this.props.dispatch(action);
                     }}

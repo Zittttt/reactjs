@@ -19,12 +19,12 @@ const stateDefault = {
   ],
 
   nguoiDungSua: {
-    taiKhoan: " nguyenvana",
-    hoTen: "Nguyễn Văn A",
-    email: "nguyenvana@gmail.com",
-    matKhau: "asdasd",
-    soDienThoai: "0909090909",
-    loaiNguoiDung: "QuanTri",
+    taiKhoan: "",
+    hoTen: "",
+    email: "",
+    matKhau: "",
+    soDienThoai: "",
+    loaiNguoiDung: "",
   },
 };
 

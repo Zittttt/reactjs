@@ -82,15 +82,12 @@ export default class HeaderHome extends Component {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Dropdown
+                Life Cycle - Hook
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownId">
-                <a className="dropdown-item" href="#">
-                  Action 1
-                </a>
-                <a className="dropdown-item" href="#">
-                  Action 2
-                </a>
+                <NavLink className="dropdown-item" to="/lifecycle">
+                  Life Cycle
+                </NavLink>
               </div>
             </li>
           </ul>

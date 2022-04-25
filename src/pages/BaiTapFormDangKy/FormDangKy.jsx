@@ -87,6 +87,9 @@ class FormDangKy extends Component {
 
   render() {
     console.log(this.state);
+    let { taiKhoan, hoTen, email, matKhau, soDienThoai, loaiNguoiDung } =
+      this.props.nguoiDungSua;
+
     return (
       <form className="card" onSubmit={this.handleSubmit}>
         <div className="card-header text-white font-weight-bold">
@@ -103,6 +106,7 @@ class FormDangKy extends Component {
                   id="taiKhoan"
                   name="Tài khoản"
                   onChange={this.handleChangeInput}
+                  value={taiKhoan}
                 />
                 <p className="text text-danger">{this.state.errors.taiKhoan}</p>
               </div>
@@ -114,6 +118,7 @@ class FormDangKy extends Component {
                   id="matKhau"
                   name="Mật khẩu"
                   onChange={this.handleChangeInput}
+                  value={matKhau}
                 />
                 <p className="text text-danger">{this.state.errors.matKhau}</p>
               </div>
@@ -125,6 +130,7 @@ class FormDangKy extends Component {
                   id="email"
                   name="Email"
                   onChange={this.handleChangeInput}
+                  value={email}
                 />
                 <p className="text text-danger">{this.state.errors.email}</p>
               </div>
@@ -138,6 +144,7 @@ class FormDangKy extends Component {
                   id="hoTen"
                   name="Họ tên"
                   onChange={this.handleChangeInput}
+                  value={hoTen}
                 />
                 <p className="text text-danger">{this.state.errors.hoTen}</p>
               </div>
@@ -149,6 +156,7 @@ class FormDangKy extends Component {
                   id="soDienThoai"
                   name="Số điện thoại"
                   onChange={this.handleChangeInput}
+                  value={soDienThoai}
                 />
                 <p className="text text-danger">
                   {this.state.errors.soDienThoai}
@@ -161,6 +169,7 @@ class FormDangKy extends Component {
                   id="loaiNguoiDung"
                   className="form-control"
                   onChange={this.handleChangeInput}
+                  value={loaiNguoiDung}
                 >
                   <option value="QuanTri">Quản Trị</option>
                   <option value="NguoiDung">Người Dùng</option>
@@ -179,4 +188,10 @@ class FormDangKy extends Component {
   }
 }
 
-export default connect()(FormDangKy);
+const mapStateToProps = (rootReducer) => {
+  return {
+    nguoiDungSua: rootReducer.formDangKyReducer.nguoiDungSua,
+  };
+};
+
+export default connect(mapStateToProps)(FormDangKy);
