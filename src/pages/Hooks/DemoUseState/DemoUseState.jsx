@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BaiTapChonXeRFC from "./BaiTapChonXeRFC";
 
 export default function DemoUseState(props) {
   // thay vì this.props thì rfc có param là props
@@ -43,6 +44,9 @@ export default function DemoUseState(props) {
           </button>
         </div>
       </div>
+      <hr />
+      <h3>Bài tập 1: Bài tập chọn xe</h3>
+      <BaiTapChonXeRFC />
     </div>
   );
 }
