@@ -30,6 +30,7 @@ import DemoUseState from "./pages/Hooks/DemoUseState/DemoUseState";
 import DemoUseEffect from "./pages/Hooks/DemoUseEffect/DemoUseEffect";
 import ApiRCC from "./pages/Api/DemoApi/ApiRCC";
 import ApiRFC from "./pages/Api/DemoApi/ApiRFC";
+import DemoUseCallback from "./pages/Hooks/DemoUseCallback/DemoUseCallback";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route exact path={"/useeffect"} component={DemoUseEffect} />
         <Route exact path={"/apircc"} component={ApiRCC} />
         <Route exact path={"/apirfc"} component={ApiRFC} />
+        <Route exact path={"/usecallback"} component={DemoUseCallback} />
 
         {/* Trang mặc định luôn nằm dưới cùng */}
         <Route exact path={"/"} component={Home} />

@@ -9,35 +9,52 @@ export default class ApiRCC extends Component {
   };
 
   getAllTaskApi = async () => {
-    // //gọi api = axios khi người dùng click vào getAllTask
-    // // console.log("api");
-    // let promise = axios({
-    //   url: "http://svcy.myclass.vn/api/ToDoList/GetAllTask",
-    //   method: "GET",
-    // });
-    // //promise.then là hàm bất đồng bộ (trong khi xử lý thì các hàm bên ngoài vẫn tiếp tục chạy)
-    // //Xử lý thành công
-    // promise.then((result) => {
-    //   //   console.table(result.data);
-    //   console.log('api')
-    //   this.setState({ arrTask: result.data });
-    // });
-    // //Xử lý thất bại
-    // promise.catch((errors) => {
-    //   console.log({ errors });
-    // });
-    // console.log("ok");
+    {
+      // Cách 1: call api dùng promise
+      // //gọi api = axios khi người dùng click vào getAllTask
+      // // console.log("api");
+      // let promise = axios({
+      // url: "http://svcy.myclass.vn/api/ToDoList/GetAllTask",
+      // method: "GET",
+      // });
+      // //promise.then là hàm bất đồng bộ (trong khi xử lý thì các hàm bên ngoài vẫn tiếp tục chạy)
+      // //Xử lý thành công
+      // promise.then((result) => {
+      //   //   console.table(result.data);
+      //   console.log('api')
+      //   this.setState({ arrTask: result.data });
+      // });
+      // //Xử lý thất bại
+      // promise.catch((errors) => {
+      //   console.log({ errors });
+      // });
+      // console.log("ok");
+    }
+    //Cách 2: dùng async await (ES7)
+    try {
+      let result = await axios({
+        url: "http://svcy.myclass.vn/api/ToDoList/GetAllTask",
+        method: "GET",
+      });
+      //Sau khi đợi api trả về kết quả thì gán vào state
+      this.setState({
+        arrTask: result.data,
+      });
+      console.log("result", result.data);
 
-    let result = axios;
+      console.log("oke");
+    } catch (errors) {
+      console.log({ errors });
+    }
   };
 
   componentDidMount() {
     //gọi api sau khi giao diện load xong
     this.getAllTaskApi();
-    timeOut = setInterval(() => {
-      console.log("call api");
-      this.getAllTaskApi();
-    }, 1000);
+    // timeOut = setInterval(() => {
+    //   console.log("call api");
+    //   this.getAllTaskApi();
+    // }, 1000);
   }
 
   componentWillUnmount() {
