@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-
 function ChildComponent(props) {
   console.log("child component");
   return (

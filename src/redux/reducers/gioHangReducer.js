@@ -3,7 +3,7 @@ const stateGioHangDefault = [
     { maSP: 2, tenSP: 'Meizu 16Xs', hinhAnh: './img/meizuphone.jpg', soLuong: 1, giaBan: 7600000 },
 ]//00xx
 export const gioHangReducer = (state = stateGioHangDefault, action) => {
-    console.log('action', action);
+    // console.log('action', action)
     switch (action.type) {
         case 'THEM_GIO_HANG': {
             //Tạo ra spGioHang có số lượng
