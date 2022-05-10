@@ -35,8 +35,11 @@ import DemoUseMemo from "./pages/Hooks/DemoUseMemo/DemoUseMemo";
 import DemoUseRef from "./pages/Hooks/DemoUseRef/DemoUseRef";
 import FakeBookApp from "./pages/Hooks/HookRedux/FakeBookApp";
 import ReduxApi from "./pages/ReduxApi/ReduxApi";
+<<<<<<< HEAD
 import DemoHOC from "./pages/HOC/DemoHOC";
 import ModalHOC from "./pages/HOC/ModalHOC";
+=======
+>>>>>>> 894a6ef08f407cc26d56dcb63d4ecf99195ea721
 
 function App() {
   return (
