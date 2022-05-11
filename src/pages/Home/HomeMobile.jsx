@@ -4,7 +4,7 @@ import axios from "axios";
 import { http, TOKEN_CYBERSOFT } from "../../util/config";
 import { getPhimApiAction } from "../../redux/actions/phimAction";
 
-export default function Home(props) {
+export default function HomeMobile(props) {
   console.log(props);
 
   const { arrPhim } = useSelector((state) => state.phimReducer);
@@ -22,10 +22,17 @@ export default function Home(props) {
   const renderPhim = () => {
     return arrPhim.map((phim, index) => {
       return (
-        <div className="col-md-4 mt-2" key={index}>
-          <div className="card">
-            <img src={phim.hinhAnh} alt="..." height={300} />
-            <div className="card-body">{phim.tenPhim}</div>
+        <div className="col-6">
+          <div className="d-flex">
+            <img src={phim.hinhAnh} alt="..." height={150} />
+            <div>
+              <p>
+                {phim.moTa.length > 50
+                  ? phim.moTa.substring(0, 50) + "..."
+                  : phim.moTa}
+              </p>
+              <button className="btn btn-success">Đặt vé</button>
+            </div>
           </div>
         </div>
       );

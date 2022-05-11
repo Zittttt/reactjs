@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 //Cấu hình redux
-import { Provider } from 'react-redux'
-import { store } from './redux/configStore';
-
+import { Provider } from "react-redux";
+import { store } from "./redux/configStore";
+//Cấu hình AntD
+import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>
-  , //jsx
-  document.getElementById('root')
+  </Provider>, //jsx
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

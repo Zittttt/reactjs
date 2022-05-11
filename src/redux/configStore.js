@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import { fakeBookAppReducer } from "./reducers/fakeBookAppReducer";
 import { formDangKyReducer } from "./reducers/formDangKyReducer";
 import { gioHangReducer } from "./reducers/gioHangReducer";
 import { phimReducer } from "./reducers/phimReducer";
-=======
-import { combineReducers, createStore } from "redux";
-import { fakeBookAppReducer } from "./reducers/fakeBookAppReducer";
-import { formDangKyReducer } from "./reducers/formDangKyReducer";
-import { gioHangReducer } from "./reducers/gioHangReducer";
->>>>>>> 894a6ef08f407cc26d56dcb63d4ecf99195ea721
 import { arrTaskReducer } from "./reducers/toDoAppReducer";
 import { XucXacReducer } from "./reducers/XucXacReducer";
 
