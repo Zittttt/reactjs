@@ -8,6 +8,7 @@ export default function Home(props) {
   console.log(props);
 
   const { arrPhim } = useSelector((state) => state.phimReducer);
+  
   const dispatch = useDispatch();
   useEffect(async () => {
     /*

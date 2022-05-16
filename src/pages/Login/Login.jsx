@@ -24,7 +24,7 @@ export default function Login(props) {
       console.log(result);
       //Lưu vào localstorage
       let usLoginResult = result.data.content;
-      localStorage.setItem("userLogin", JSON.stringify(us));
+      localStorage.setItem("userLogin", JSON.stringify(usLoginResult));
     } catch (err) {
       console.log(err);
     }
